@@ -1,7 +1,6 @@
 services:
   caddy:
-    build:
-      context: .
+    image:${CONTAINER_REGISTRY}cf-caddy
     restart: unless-stopped
     ports:
       - "80:80"
