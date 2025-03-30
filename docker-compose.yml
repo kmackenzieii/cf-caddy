@@ -1,0 +1,22 @@
+services:
+  caddy:
+    build:
+      context: .
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ${PWD}/conf:/etc/caddy
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      SITE_DOMAIN: ${SITE_DOMAIN}
+      SITE_RP_ADDRESS: ${SITE_RP_ADDRESS}
+      SITE_CF_TOKEN: ${SITE_CF_TOKEN}
+
+volumes:
+  caddy_data:
+  caddy_config:
+
